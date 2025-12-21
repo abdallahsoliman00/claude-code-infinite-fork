@@ -3,17 +3,26 @@
   "version": "1.0.0",
   "description": "Wrapper for Claude Code CLI",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "cc-inf": "dist/cli.js"
   },
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "start": "node dist/cli.js"
+    "start": "node dist/cli.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": ["claude", "cli", "ai"],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crizCraig/claude-code-infinite.git"
+  },
+  "author": "crizCraig",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^25.0.0",

@@ -126,7 +126,7 @@ function printBanner() {
 
         \x1b[1;38;5;48m✦ Infinitely-long coding sessions for Claude, powered by \x1b]8;;https://MemTree.dev\x1b\\MemTree.dev\x1b]8;;\x1b\\\x1b[0m
            \x1b[1;38;5;87m✦ Get the speed and quality of a fresh chat with every message\x1b[0m
-                   \x1b[1;38;5;87m✦ Retrieves relevant info from entire thread \x1b[0m
+                  \x1b[1;38;5;87m✦ Retrieves relevant info from all past messages \x1b[0m
 `;
   console.log(banner);
 }
