@@ -149,24 +149,26 @@ async function main() {
     console.log("\x1b[1;33m🏠 LOCAL MODE\x1b[0m\n");
   }
 
-  // Get OAuth token from keychain
+  // Get OAuth token from keychain (optional - we can work without it)
   const credentials = getOAuthToken(isDebugMode);
+  let oauthToken = credentials?.claudeAiOauth ?? null;
 
-  if (!credentials?.claudeAiOauth) {
-    console.error("Could not retrieve Claude OAuth credentials from keychain.");
-    console.error("Make sure you're logged into Claude Code first.");
-    process.exit(1);
-  }
-
-  let oauthToken = credentials.claudeAiOauth;
-
-  // If token is expired, attempt to refresh it by launching Claude
-  if (isTokenExpired(oauthToken, isDebugMode)) {
+  if (!oauthToken) {
+    console.log("\x1b[1;33m⚠️  No Claude Code OAuth credentials found.\x1b[0m");
+    console.log("\x1b[33m   Claude Code is much cheaper with an Anthropic subscription.\x1b[0m");
+    console.log("\x1b[33m   MemTree.dev makes it even cheaper by reducing messages sent to Anthropic.\x1b[0m");
+    console.log("\x1b[33m   Run '/login' to log in and get discounted rates.\x1b[0m\n");
+  } else if (isTokenExpired(oauthToken, isDebugMode)) {
+    // If token is expired, attempt to refresh it by launching Claude
     const refreshedToken = await refreshOAuthToken(isDebugMode);
     if (!refreshedToken) {
-      process.exit(1);
+      console.log("\x1b[1;33m⚠️  Could not refresh OAuth token. Continuing without it.\x1b[0m");
+      console.log("\x1b[33m   Claude Code is much cheaper with an Anthropic subscription.\x1b[0m");
+      console.log("\x1b[33m   MemTree.dev makes it even cheaper by reducing messages sent to Anthropic.\x1b[0m\n");
+      oauthToken = null;
+    } else {
+      oauthToken = refreshedToken;
     }
-    oauthToken = refreshedToken;
   }
 
   // Get or prompt for Polychat API key (separate keys for local vs production)
@@ -186,8 +188,10 @@ async function main() {
     console.log("API key saved.\n");
   }
 
-  // Build combined auth token
-  const combinedAuthToken = `${oauthToken.accessToken},${polychatApiKey}`;
+  // Build auth token (with or without OAuth)
+  const combinedAuthToken = oauthToken
+    ? `${oauthToken.accessToken},${polychatApiKey}`
+    : polychatApiKey;
 
   // Choose base URL based on mode
   const baseUrl = isLocalMode ? LOCAL_BASE_URL : POLYCHAT_BASE_URL;
