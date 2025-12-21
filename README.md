@@ -1,3 +1,5 @@
+<img width="692" height="314" alt="image" src="https://github.com/user-attachments/assets/8228030c-1e35-48d0-b836-04d903498869" />
+
 # Claude Code Infinite
 
 ### Finish your feature without starting a new session
