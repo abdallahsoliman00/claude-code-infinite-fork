@@ -14,19 +14,14 @@ _Claude Code can now handle infinitely long sessions using [PolyChat's](https://
 
 1. Install [Claude Code](https://www.claude.com/product/claude-code) in your Unix shell
 
-   _If are asked to login, choose option 2. "Anthropic Console account"._
-   
-   _Note that you don't need to buy API credits, just copy the token and login to get through Claude Code's setup_
-3. Logout of Claude Code
-   ```bash
-   claude
-   > /logout
-   ```
-3. Get your PolyChat API key here: https://polychat.co/auth?memtree=true
-4. Now run Claude with these env vars
+2. Install Claude Code **✨Infinite✨** wrapper via [npm](https://nodejs.org/):
   ```bash
-  ANTHROPIC_BASE_URL=https://polychat.co/cc ANTHROPIC_AUTH_TOKEN=YOUR_POLYCHAT_API_KEY claude
-```
+npm install -g claude-code-infinite
+  ```
+3. Run
+  ```bash
+  cc-inf
+  ```
 
 ## How it works
 
