@@ -4,25 +4,26 @@
 
 # Claude Code Infinite
 
-### Finish your feature without starting a new session
+### The ultimate Claude Code upgrade
 
-### Never run `/compact` again
-
-_Claude Code can now handle infinitely long sessions using [PolyChat's](https://polychat.co) memory API, [MemTree](https://memtree.dev)._
+* Maximize Claude's intelligence with [MemTree.dev](https://memtree.dev), the world's premier context-management engine
+* Supports unlimited-length coding sessions using smart memory from MemTree.dev
+* Feels fast and fresh with every message
+* Automatically recalls only the relevant past information
+* Allows you to finish your feature without summarizing, compacting, clearing context, or starting a new session
 
 ## Requirements
 
-* A Unix shell on Mac, Linux, or WSL in Windows
+* [Claude Code (the terminal version)](https://code.claude.com/docs/en/quickstart)
+* [node.js 18 or newer](https://nodejs.org/en/download/)
 
 ## Setup
 
-1. Install [Claude Code](https://www.claude.com/product/claude-code) in your Unix shell
-
-2. Install Claude Code **✨Infinite✨** wrapper via [npm](https://nodejs.org/):
+1. Install with npm
   ```bash
 npm install -g claude-code-infinite
   ```
-3. Run
+2. Run Claude Code Infinite with
   ```bash
   cc-inf
   ```
