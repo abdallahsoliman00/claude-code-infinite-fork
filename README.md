@@ -1,5 +1,6 @@
 <p align="center">
-  <img width="692" height="314" alt="image" src="https://github.com/user-attachments/assets/8228030c-1e35-48d0-b836-04d903498869" />
+  <img width="867" height="285" alt="image" src="https://github.com/user-attachments/assets/05971722-dfc1-4dab-9bad-a98d96e6bb09" />
+
 </p>
 
 # Claude Code Infinite
