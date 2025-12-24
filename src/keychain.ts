@@ -36,6 +36,24 @@ export function getOAuthToken(debug = false): KeychainCredentials | null {
 
   } // platform = "win32"
 
+  else if (process.platform === "linux") {
+
+    try {
+      if (debug) {
+        console.log(`[DEBUG] Fetching credentials`);
+      }
+
+      // Get credentials from the .claude file
+      let path_to_creds_JSON = `${process.env.HOME}/.claude/.credentials.json`;
+      credentials = JSON.parse(fs.readFileSync(path_to_creds_JSON, 'utf8')) as KeychainCredentials;
+
+    } catch (error) {
+      console.error("Failed to retrieve credentials: ", error);
+      return null;
+    }
+
+  } // platform = "linux"
+
 
   else if (process.platform === "darwin") {
 
@@ -65,7 +83,7 @@ export function getOAuthToken(debug = false): KeychainCredentials | null {
 
   // Other platforms
   else {
-    console.error("OAuth token extraction is only supported on macOS and Windows.");
+    console.error("OAuth token extraction is only supported on macOS, Windows and Linux.");
     return null;
   }
 
